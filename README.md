@@ -2,8 +2,9 @@
 
 Este projeto é uma aplicação simples desenvolvida em HTML, CSS e JavaScript para identificar a bandeira de um cartão de crédito (Visa, MasterCard, Elo, etc.) com base no número digitado.
 
-![image](https://github.com/user-attachments/assets/21d363ef-c2a6-48a2-809b-2ad086cda445)
-
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/21d363ef-c2a6-48a2-809b-2ad086cda445" alt="Prévia do projeto">
+</p>
 ## 🚀 Funcionalidades
 
 - Interface moderna com roxo neon e preto
