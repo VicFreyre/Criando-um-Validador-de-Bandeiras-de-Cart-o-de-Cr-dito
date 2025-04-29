@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Identificador de Bandeira de Cartão</title>
+  <style>
+
+  
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1a1a1a;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #9c27b0; /* Roxo neon */
+      animation: pulsate 1.5s ease-in-out infinite;
+    }
+
+    input, button {
+      padding: 15px;
+      font-size: 18px;
+      margin: 10px 0;
+      border: 2px solid #9c27b0;
+      background-color: #1a1a1a;
+      color: #9c27b0;
+      border-radius: 5px;
+      outline: none;
+      width: 60%;
+      transition: all 0.3s ease;
+    }
+
+    input:focus, button:focus {
+      border-color: #ffffff;
+      box-shadow: 0 0 10px rgba(156, 39, 176, 0.8);
+    }
+
+    button {
+      cursor: pointer;
+      font-weight: bold;
+      background-color: #9c27b0;
+      color: white;
+      animation: pulsate 1.5s ease-in-out infinite;
+    }
+
+    button:hover {
+      background-color: #7b1fa2;
+    }
+
+    .result {
+      margin-top: 30px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #9c27b0;
+      animation: pulsateText 2s ease-in-out infinite;
+    }
+
+  
+
+    @keyframes pulsateText {
+      0% {
+        color: #9c27b0;
+      }
+      50% {
+        color: #e1bee7;
+      }
+      100% {
+        color: #9c27b0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Identifique a Bandeira do Cartão</h1>
+  <input type="text" id="cardNumber" placeholder="Digite o número do cartão" maxlength="19">
+  <button onclick="identificarBandeira()">Verificar Bandeira</button>
+  <div class="result" id="resultado"></div>
+
+  <script>
+    function identificarBandeira() {
+      const numero = document.getElementById("cardNumber").value.replace(/\D/g, '');
+      let bandeira = "Bandeira não identificada";
+
+      if (/^4[0-9]{12}(?:[0-9]{3})?$/.test(numero)) {
+        bandeira = "Visa";
+      } else if (/^5[1-5][0-9]{14}$/.test(numero) || /^2(2[2-9][1-9]|2[3-9][0-9]|[3-6][0-9]{2}|7[0-1][0-9]|720)[0-9]{12}$/.test(numero)) {
+        bandeira = "MasterCard";
+      } else if (/^3[47][0-9]{13}$/.test(numero)) {
+        bandeira = "American Express";
+      } else if (/^6(?:011|5[0-9]{2})[0-9]{12}$/.test(numero)) {
+        bandeira = "Discover";
+      } else if (/^(4011(78|79)|431274|438935|451416|457393|504175|5067[0-6]|50677[0-8]|5090[0-9]{2}|627780|636297|636368|650[4-9][0-9]|6516[0-9]|6550[0-9])[0-9]{10,12}$/.test(numero)) {
+        bandeira = "Elo";
+      }
+
+      document.getElementById("resultado").textContent = `Bandeira: ${bandeira}`;
+    }
+  </script>
+
+</body>
+</html>
